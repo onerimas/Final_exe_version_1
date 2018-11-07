@@ -1,0 +1,2 @@
+model_checkpoint_path: "C:/Users/Rimas/Desktop/MSc/My project/5sec_NN_my/nn_save/save_net.ckpt"
+all_model_checkpoint_paths: "C:/Users/Rimas/Desktop/MSc/My project/5sec_NN_my/nn_save/save_net.ckpt"

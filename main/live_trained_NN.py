@@ -135,6 +135,77 @@ def range_max_index(range_start,range_end,numarray):
 
 #end of my functions///////////////////////////////////////
 
+#Youtube features ///////////////////////////////////////////
+def youtube_f1 (numarray):
+    # x=mf.op_max_checker(5434,numarray)
+    # if x>1:
+    #     return numarray[5434]
+    # else:
+    #     return 0
+    return numarray[5434] if numarray[5434]>0 else 0
+
+def youtube_f2 (numarray):
+    x=numarray[3521]+numarray[3522]+numarray[3523]+numarray[3516]
+    if x>2.1:
+        return x
+    else:
+        return 0
+
+def youtube_f3 (numarray):
+    x=numarray[2849]+numarray[2850]+numarray[2851]+numarray[4571]
+    if x>0:
+        return x
+    else:
+        return 0
+
+def youtube_f4 (numarray):
+    x=numarray[2513]+numarray[2514]+numarray[2515]+numarray[2516]+numarray[2517]
+    if x>1:
+        return math.log(x,5)
+    else:
+        return 0
+
+def youtube_f5 (numarray):
+    x=op_max_checker(4100,numarray)
+    if x>5:
+        return numarray[4100]
+    else:
+        return 0
+
+#added 3660 and 3664 because of testbed
+def youtube_f6 (numarray):
+    x = numarray[3661] + numarray[3662] + numarray[3663]
+    if x>3:
+        return math.log(x,5)
+    else:
+        return 0
+
+def youtube_f7 (numarray):
+    x=0
+    x=range_area(2485,2493,numarray)
+    #x=numarray[2485]+numarray[2493]
+    if x>3:
+        return math.log(x,10)
+    else:
+        return 0
+#following cunctions were added to handle testbed data ===========
+def youtube_f8(numarray):
+    x = numarray[4113] + numarray[4112]
+    return x if x>0 else 0
+
+def youtube_f9(nummarray):
+    x = nummarray[3418] + nummarray[3204] + nummarray[3106]
+    return x if x>0 else 0
+
+def youtube_f10(numarray):
+    x = range_area(5100,5650,numarray)
+    return x if x>0 else 0
+
+def youtube_f11 (numarray):
+    x = numarray[3863] + numarray[3859]
+    return x if x>0 else 0
+#End of youtube features ////////////////////////////////////
+
 #Facebook features/////////////////////////////////////////
 def facebook_f1 (numarray):
     x=op_max_checker(3903,numarray)
@@ -179,87 +250,19 @@ def facebook_f6 (numarray):
     else:
         return 0
 
+#following cunctions were added to handle testbed data ===========
+def facebook_f7(numarray):
+    x = numarray[3899] + numarray[3900]
+    return x if x>0 else 0
+
+def facebook_f8(numarray):
+    x = range_area(4302,4334,numarray)
+    return x if x>2 else 0
+
+def facebook_f9(numarray):
+    x = numarray[3904] + numarray[3905] + numarray[3906]
+    return x if x>0 else 0
 #End of facebook features//////////////////////////////////
-
-#Skype features////////////////////////////////////////////
-
-def skype_f1f2f3 (numarray):
-    x=range_nzlength(4090,4150,numarray,6)
-    index, value = range_max_index(4090,4150,numarray)
-
-    if x>6 and value>14:
-        sstd=range_std(4080,4160,numarray)
-        sarea=range_area(4080,4160,numarray)
-        return x,sstd,math.log(sarea,10)
-    else:
-        return 0,0,0
-
-def skype_f4f5f6 (numarray):
-    x=range_nzlength(3837,3910,numarray,8)
-    index, value = range_max_index(3837,3910,numarray)
-    if x>8 and 15<value<85:
-        sstd=range_std(3837,3910,numarray)
-        sarea=range_area(3837,3910,numarray)
-        return x,sstd,math.log(sarea,10)
-    else:
-        return 0,0,0
-
-def skype_f7 (numarray):
-    if (numarray[3861])>0:
-        #x=math.log(numarray[3861],5)
-        x=numarray[3861]
-        return x
-    else:
-        return 0
-
-def skype_f8 (numarray):
-    if (numarray[3885])>0:
-        x=math.log(numarray[3885],5)
-        return x
-    else:
-        return 0
-
-def skype_f9 (numarray):
-    return math.log(numarray[4114],5) if numarray[4114]>1 else 0
-
-
-def skype_f10 (numarray):
-    x=numarray[3888]+numarray[3861]+numarray[3859]
-    if x>15:
-        return x
-    else:
-        return 0
-#End of skype features////////////////////////////////////
-
-#Skype Video features//////////////////////////////////////////////
-
-def skypeVDOC_f1f2f3 (numarray):
-    x=0
-    for i in range(2800,3400):
-        if numarray[i]>9:
-            x+=1
-        else:
-            continue
-
-    svdoc_sd=range_std(2800,3400,numarray)
-    svdoc_area=range_area(2800,3400,numarray)
-    return x,svdoc_sd,math.log(svdoc_area,10) if svdoc_area>0 else 0
-
-def skypeVDOC_f4f5f6 (numarray):
-    x=0
-    for i in range(4500,5100):
-        if numarray[i]>7:
-            x+=1
-        else:
-            continue
-
-    svdoc_sd=range_std(4500,5100,numarray)
-    svdoc_area=range_area(4500,5100,numarray)
-    #svdoc_area_log=math.log(svdoc_area,10)
-    return x,svdoc_sd,math.log(svdoc_area,10) if svdoc_area>0 else 0
-
-
-#End of Skype vedio features/////////////////////////////////
 
 #Whatsapp features //////////////////////////////////////////
 def whatsapp_f1f2f3 (numarray):
@@ -337,60 +340,81 @@ def whatsapp_f10f11f12 (numarray):
         return 0,0,0
 #End of whatsapp features////////////////////////////////////
 
-#Youtube features ///////////////////////////////////////////
+#Skype features////////////////////////////////////////////
+def skype_f1f2f3 (numarray):
+    x=range_nzlength(4090,4150,numarray,6)
+    index, value = range_max_index(4090,4150,numarray)
 
-def youtube_f1 (numarray):
-    # x=mf.op_max_checker(5434,numarray)
-    # if x>1:
-    #     return numarray[5434]
-    # else:
-    #     return 0
-    return numarray[5434] if numarray[5434]>0 else 0
+    if x>6 and value>14:
+        sstd=range_std(4080,4160,numarray)
+        sarea=range_area(4080,4160,numarray)
+        return x,sstd,math.log(sarea,10)
+    else:
+        return 0,0,0
 
-def youtube_f2 (numarray):
-    x=numarray[3521]+numarray[3522]+numarray[3523]+numarray[3516]
-    if x>2.1:
+def skype_f4f5f6 (numarray):
+    x=range_nzlength(3837,3910,numarray,8)
+    index, value = range_max_index(3837,3910,numarray)
+    if x>8 and 15<value<85:
+        sstd=range_std(3837,3910,numarray)
+        sarea=range_area(3837,3910,numarray)
+        return x,sstd,math.log(sarea,10)
+    else:
+        return 0,0,0
+
+def skype_f7 (numarray):
+    if (numarray[3861])>0:
+        #x=math.log(numarray[3861],5)
+        x=numarray[3861]
         return x
     else:
         return 0
 
-def youtube_f3 (numarray):
-    x=numarray[2849]+numarray[2850]+numarray[2851]+numarray[4571]
-    if x>0:
+def skype_f8 (numarray):
+    if (numarray[3885])>0:
+        x=math.log(numarray[3885],5)
         return x
     else:
         return 0
 
-def youtube_f4 (numarray):
-    x=numarray[2513]+numarray[2514]+numarray[2515]+numarray[2516]+numarray[2517]
-    if x>1:
-        return math.log(x,5)
+def skype_f9 (numarray):
+    return math.log(numarray[4114],5) if numarray[4114]>1 else 0
+
+
+def skype_f10 (numarray):
+    x=numarray[3888]+numarray[3861]+numarray[3859]
+    if x>15:
+        return x
     else:
         return 0
+#End of skype features////////////////////////////////////
 
-def youtube_f5 (numarray):
-    x=op_max_checker(4100,numarray)
-    if x>5:
-        return numarray[4100]
-    else:
-        return 0
-
-def youtube_f6 (numarray):
-    x=numarray[3661]+numarray[3662]+numarray[3663]
-    if x>3:
-        return math.log(x,5)
-    else:
-        return 0
-
-def youtube_f7 (numarray):
+#Skype Video features//////////////////////////////////////////////
+def skypeVDOC_f1f2f3 (numarray):
     x=0
-    x=range_area(2485,2493,numarray)
-    #x=numarray[2485]+numarray[2493]
-    if x>3:
-        return math.log(x,10)
-    else:
-        return 0
-#End of youtube features ////////////////////////////////////
+    for i in range(2800,3400):
+        if numarray[i]>9:
+            x+=1
+        else:
+            continue
+
+    svdoc_sd=range_std(2800,3400,numarray)
+    svdoc_area=range_area(2800,3400,numarray)
+    return x,svdoc_sd,math.log(svdoc_area,10) if svdoc_area>0 else 0
+
+def skypeVDOC_f4f5f6 (numarray):
+    x=0
+    for i in range(4500,5100):
+        if numarray[i]>7:
+            x+=1
+        else:
+            continue
+
+    svdoc_sd=range_std(4500,5100,numarray)
+    svdoc_area=range_area(4500,5100,numarray)
+    #svdoc_area_log=math.log(svdoc_area,10)
+    return x,svdoc_sd,math.log(svdoc_area,10) if svdoc_area>0 else 0
+#End of Skype vedio features/////////////////////////////////
 
 
 while True:
@@ -473,6 +497,10 @@ while True:
     features.append(youtube_f5(listbukket1))
     features.append(youtube_f6(listbukket1))
     features.append(youtube_f7(listbukket1))
+    features.append(youtube_f8(listbukket1))
+    features.append(youtube_f9(listbukket1))
+    features.append(youtube_f10(listbukket1))
+    features.append(youtube_f11(listbukket1))
 
     #Facebook Vedio ===========================================================
     features.append(facebook_f1(listbukket1))
@@ -481,6 +509,9 @@ while True:
     features.append(facebook_f4(listbukket1))
     features.append(facebook_f5(listbukket1))
     features.append(facebook_f6(listbukket1))
+    features.append(facebook_f7(listbukket1))
+    features.append(facebook_f8(listbukket1))
+    features.append(facebook_f9(listbukket1))
 
     #WhatsApp call===========================================================
     x,y,z = whatsapp_f1f2f3(listbukket1)

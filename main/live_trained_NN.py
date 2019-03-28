@@ -422,11 +422,11 @@ while True:
     tf.reset_default_graph()
     #///////////////////////////////////////////////////////////////////////////
     #pkts_list=sa.sniff(timeout=5)
-    pkts_list=sniff(iface=conf.iface,timeout=6)
+    pkts_list=sniff(iface=conf.iface,timeout=8)
 
     sent_pktsl=[]
     received_pktsl=[]
-    time_p=5
+    time_p=8
 
     features=[]
     #'70:71:bc:71:0f:09' ----> desktop
@@ -501,7 +501,8 @@ while True:
     features.append(youtube_f9(listbukket1))
     features.append(youtube_f10(listbukket1))
     features.append(youtube_f11(listbukket1))
-
+    # features.append(features[0] + features[1] + features[2] + features[3] + features[4] + features[5]
+    #                 + features[6] + features[7] + features[8] + features[9] + features[10])
     #Facebook Vedio ===========================================================
     features.append(facebook_f1(listbukket1))
     features.append(facebook_f2(listbukket1))
@@ -512,7 +513,8 @@ while True:
     features.append(facebook_f7(listbukket1))
     features.append(facebook_f8(listbukket1))
     features.append(facebook_f9(listbukket1))
-
+    # features.append(features[12] + features[13] + features[14] + features[15] + features[16] + features[17]
+    #                 + features[18] + features[19] + features[20])
     #WhatsApp call===========================================================
     x,y,z = whatsapp_f1f2f3(listbukket1)
     features.append(x)
@@ -528,7 +530,8 @@ while True:
     features.append(x)
     features.append(y)
     features.append(z)
-
+    # features.append(features[22] + features[23] + features[24] + features[25] + features[26] + features[27]
+    #                 + features[28] + features[29] + features[30] + features[31] + features[32] + features[33])
     #Skype call===========================================================
     x,y,z = skype_f1f2f3(listbukket1)
     features.append(x)
@@ -542,7 +545,8 @@ while True:
     features.append(skype_f8(listbukket1))
     features.append(skype_f9(listbukket1))
     features.append(skype_f10(listbukket1))
-
+    # features.append(features[35] + features[36] + features[37] + features[38] + features[39] + features[40]
+    #                 + features[41] + features[42] + features[43] + features[44])
     #Skype Vedio call===========================================================
     x,y,z=skypeVDOC_f1f2f3(listbukket1)
     features.append(x)
@@ -552,7 +556,7 @@ while True:
     features.append(x)
     features.append(y)
     features.append(z)
-
+    #features.append(features[46] + features[47] + features[48] + features[49] + features[50] + features[51])
     #//////////shrinking the concatienated llist
     #new=[]
     #new=mf.shrink(listbukket1,4)
@@ -574,15 +578,27 @@ while True:
     # labels_test = (np.arange(1) == nn_testtargets[:,None]).astype(np.float32)
 
     # input layer
-    hid1_size = 64
+    hid1_size = 48
     w1 = tf.Variable(tf.random_normal([hid1_size, my_list.shape[1]],stddev= 0.1, seed=1), name='w1')
     b1 = tf.Variable(tf.random_normal(shape=(hid1_size, 1)), name='b1')
     y1 = tf.nn.sigmoid(tf.add(tf.matmul(w1, tf.transpose(inputs)), b1))
 
+    # 2nd layer
+    hid2_size = 20
+    w2 = tf.Variable(tf.random_normal([hid2_size, hid1_size],stddev= 0.1, seed=1), name='w2')
+    b2 = tf.Variable(tf.random_normal(shape=(hid2_size, 1)), name='b2')
+    y2 = tf.nn.sigmoid(tf.add(tf.matmul(w2, y1), b2))
+
+    # # 3rd layer
+    # hid3_size = 5
+    # w3 = tf.Variable(tf.random_normal([hid3_size, hid2_size],stddev= 0.1, seed=1), name='w2')
+    # b3 = tf.Variable(tf.random_normal(shape=(hid3_size, 1)), name='b2')
+    # y3 = tf.nn.sigmoid(tf.add(tf.matmul(w3, y2), b3))
+
     # Output layer
-    wo = tf.Variable(tf.random_normal([5, hid1_size], stddev= 0.1, seed=1), name='wo')
+    wo = tf.Variable(tf.random_normal([5, hid2_size], stddev= 0.1, seed=1), name='wo')
     bo = tf.Variable(tf.random_normal([5, 1]), name='bo')
-    prediction = tf.transpose(tf.add(tf.matmul(wo, y1), bo))
+    prediction = tf.transpose(tf.add(tf.matmul(wo, y2), bo))
 
     # Loss function and optimizer
 
@@ -612,17 +628,17 @@ while True:
             predicted_class=int(pred.eval({inputs:my_list}))
 
         if predicted_class == 0:
-            predicted_class="YouTube"
+            predicted_class="YouTube,"
         elif predicted_class== 1:
-            predicted_class="FaceBook"
+            predicted_class="FaceBook,"
         elif predicted_class== 2:
-            predicted_class="WhatsApp"
+            predicted_class="WhatsApp,"
         elif predicted_class== 3:
-            predicted_class="Skype Voice Call"
+            predicted_class="SkypeVoiceCall,"
         elif predicted_class== 4:
-            predicted_class="Skype Video Call"
+            predicted_class="SkypeVideoCall,"
         else:
-            predicted_class="DO NOT KNOW"
+            predicted_class="DO_NOT_KNOW"
 
         with open("history.txt", "a") as output:
             output.write("%s\n" % predicted_class)

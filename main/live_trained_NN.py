@@ -469,8 +469,7 @@ while True:
     features.append(youtube_f5(listbukket1))
     features.append(youtube_f6(listbukket1))
 
-    features.append(features[0] + features[1] + features[2] + features[3] + features[4] + features[5]
-                    + features[6])
+    features.append(features[0] + features[1] + features[2] + features[3] + features[4] + features[5])
     #Facebook Vedio ===========================================================
     features.append(facebook_f1(listbukket1))
     features.append(facebook_f2(listbukket1))
@@ -480,8 +479,7 @@ while True:
     features.append(facebook_f6(listbukket1))
     features.append(facebook_f7(listbukket1))
 
-    features.append(features[8] + features[9] + features[10] + features[11] + features[12] + features[13]
-                    + features[14])
+    features.append(features[7] + features[8] + features[9] + features[10] + features[11] + features[12] + features[13])
     #WhatsApp call===========================================================
     x,y,z = whatsapp_f1f2f3(listbukket1)
     features.append(x)
@@ -497,8 +495,8 @@ while True:
     features.append(x)
     features.append(y)
     features.append(z)
-    features.append(features[16] + features[17] + features[18] + features[19] + features[20] + features[21]
-                    + features[22] + features[23] + features[24] + features[25] + features[26] + features[27])
+    features.append(features[15] + features[16] + features[17] + features[18] + features[19] + features[20] + features[21]
+                    + features[22] + features[23] + features[24] + features[25] + features[26])
     #Skype call===========================================================
     x,y,z = skype_f1f2f3(listbukket1)
     features.append(x)
@@ -512,8 +510,8 @@ while True:
     features.append(skype_f8(listbukket1))
     features.append(skype_f9(listbukket1))
     features.append(skype_f10(listbukket1))
-    features.append(features[29] + features[30] + features[31] + features[32] + features[33] + features[34]
-                    + features[35] + features[36] + features[37] + features[38])
+    features.append(features[28] + features[29] + features[30] + features[31] + features[32] + features[33] + features[34]
+                    + features[35] + features[36] + features[37])
     #Skype Vedio call===========================================================
     x,y,z=skypeVDOC_f1f2f3(listbukket1)
     features.append(x)
@@ -523,7 +521,7 @@ while True:
     features.append(x)
     features.append(y)
     features.append(z)
-    features.append(features[40] + features[41] + features[42] + features[43] + features[44] + features[45])
+    features.append(features[39] + features[40] + features[41] + features[42] + features[43] + features[44])
     #//////////shrinking the concatienated llist
     #new=[]
     #new=mf.shrink(listbukket1,4)

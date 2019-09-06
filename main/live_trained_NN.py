@@ -594,14 +594,24 @@ while True:
 
         if predicted_class == 0:
             predicted_class="YouTube,"
+            myCmd = 'ip net exec ue_nas tc qdisc replace dev netc root tbf rate 11000kbit latency 50ms burst 1540'
+            os.system(myCmd)
         elif predicted_class== 1:
             predicted_class="FaceBook,"
+            myCmd = 'ip net exec ue_nas tc qdisc replace dev netc root tbf rate 11000kbit latency 50ms burst 1540'
+            os.system(myCmd)
         elif predicted_class== 2:
             predicted_class="WhatsApp,"
+            myCmd = 'ip net exec ue_nas tc qdisc replace dev netc root tbf rate 22000kbit latency 50ms burst 1540'
+            os.system(myCmd)
         elif predicted_class== 3:
             predicted_class="SkypeVoiceCall,"
+            myCmd = 'ip net exec ue_nas tc qdisc replace dev netc root tbf rate 22000kbit latency 50ms burst 1540'
+            os.system(myCmd)
         elif predicted_class== 4:
             predicted_class="SkypeVideoCall,"
+            myCmd = 'ip net exec ue_nas tc qdisc replace dev netc root tbf rate 44000kbit latency 50ms burst 1540'
+            os.system(myCmd)
         else:
             predicted_class="DO_NOT_KNOW"
 

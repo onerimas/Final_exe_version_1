@@ -623,6 +623,7 @@ while True:
             output.write("%s\n" % predicted_class)
         with open("lable.txt", "w") as output:
             output.write("%s\n" % predicted_class)
+        print(predicted_class)
         # print_predict=tf.cast(prediction,'float')
         # new=list(print_predict.eval({inputs:my_list}))
         # with open("C:\\Users\\Rimas\\Desktop\\predictions\\MLPpredictionsLoaded.csv", "a") as output:

@@ -20,6 +20,7 @@ import statistics
 #import itertools
 import copy
 import time
+import os
 
 #input: myarray-> array you want to append zeros
 #       size-> outputsize of the array
@@ -388,7 +389,9 @@ def skypeVDOC_f4f5f6 (numarray):
 
 #End of Skype vedio features/////////////////////////////////
 
-
+#set capture_raw_data to True if want to save the raw packet length histogram
+capture_raw_data = True
+cnt = 0
 while True:
     #starttime=time.time() #timer start to exicute the code periodicaly
     tf.reset_default_graph()
@@ -398,7 +401,7 @@ while True:
 
     sent_pktsl=[]
     received_pktsl=[]
-    time_p=8
+    time_p = 8
 
     features=[]
     #'70:71:bc:71:0f:09' ----> desktop
@@ -461,6 +464,17 @@ while True:
     #//////////Concatenating two matrices
     listbukket1=listbukket1+listbukket2
 
+    #if capture rawdata capturing is true then save the rawdata to a text file
+    if capture_raw_data == True:
+        file_path = os.getcwd()
+        # make a folder if doesnt exist
+        if not os.path.exists(file_path + "//raw_data"):
+            os.mkdir(file_path + "//raw_data")
+
+        with open(file_path + "//raw_data//"+"raw_data_%d.txt"%(cnt), "a") as output:
+            for rawdata_item in listbukket1:
+                output.write("%s\n" % rawdata_item)
+        cnt += 1
     #YouTube Vedio===========================================================
     features.append(youtube_f1(listbukket1))
     features.append(youtube_f2(listbukket1))
@@ -594,24 +608,14 @@ while True:
 
         if predicted_class == 0:
             predicted_class="YouTube,"
-            myCmd = 'ip net exec ue_nas tc qdisc replace dev netc root tbf rate 11000kbit latency 50ms burst 1540'
-            os.system(myCmd)
         elif predicted_class== 1:
             predicted_class="FaceBook,"
-            myCmd = 'ip net exec ue_nas tc qdisc replace dev netc root tbf rate 11000kbit latency 50ms burst 1540'
-            os.system(myCmd)
         elif predicted_class== 2:
             predicted_class="WhatsApp,"
-            myCmd = 'ip net exec ue_nas tc qdisc replace dev netc root tbf rate 22000kbit latency 50ms burst 1540'
-            os.system(myCmd)
         elif predicted_class== 3:
             predicted_class="SkypeVoiceCall,"
-            myCmd = 'ip net exec ue_nas tc qdisc replace dev netc root tbf rate 22000kbit latency 50ms burst 1540'
-            os.system(myCmd)
         elif predicted_class== 4:
             predicted_class="SkypeVideoCall,"
-            myCmd = 'ip net exec ue_nas tc qdisc replace dev netc root tbf rate 44000kbit latency 50ms burst 1540'
-            os.system(myCmd)
         else:
             predicted_class="DO_NOT_KNOW"
 

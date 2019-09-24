@@ -138,100 +138,59 @@ def range_max_index(range_start,range_end,numarray):
 
 #Youtube features ///////////////////////////////////////////
 def youtube_f1 (numarray):
-    # x=mf.op_max_checker(5434,numarray)
-    # if x>1:
-    #     return numarray[5434]
-    # else:
-    #     return 0
-    return math.log(numarray[1038]+numarray[1100], 10) if numarray[1038]+numarray[1100]>0 else 0
+    sarea=range_area(5336,5356,numarray)
+    return sarea if sarea>0 else 0
 
 def youtube_f2 (numarray):
-    x=numarray[1212]+numarray[1211]+numarray[1210]
-    if x>2.1:
-        return x
-    else:
-        return 0
+    return math.log(numarray[4105], 10) if numarray[4105]>1 else 0
 
 def youtube_f3 (numarray):
-    x=numarray[1458]+numarray[1459]+numarray[1460]+numarray[1461]
-    if x>0:
-        return x
-    else:
-        return 0
+    return numarray[4102] if numarray[4102]>0 else 0
 
 def youtube_f4 (numarray):
-    x=numarray[1822]+numarray[1823]+numarray[1824]+numarray[1825]
-    if x>1:
-        return x
-    else:
-        return 0
+    return numarray[598] if numarray[598]>0 else 0
 
 def youtube_f5 (numarray):
-    x=numarray[2487]+numarray[2517]
-    if x>0:
-        return math.log(x, 10)
-    else:
-        return 0
+    return numarray[546] if numarray[546]>0 else 0
 
 def youtube_f6 (numarray):
-    x=numarray[2658]+numarray[2659]+numarray[2660]+numarray[2661]
-    if x>1:
-        return x
-    else:
-        return 0
+    return numarray[534] if numarray[534]>0 else 0
+
+def youtube_f7 (numarray):
+    return math.log(numarray[97]+ numarray[105], 5) if numarray[97]+ numarray[105]>1 else 0
 
 #End of youtube features ////////////////////////////////////
 
 #Facebook features/////////////////////////////////////////
 def facebook_f1 (numarray):
-    if (numarray[1138])>0:
-        return math.log(numarray[1138],10)
-    else:
-        return 0
+    sarea=range_area(4354,4410,numarray)
+    return sarea if sarea>0 else 0
 
 def facebook_f2 (numarray):
-    if (numarray[2536])>0:
-        return math.log(numarray[2536],10)
-    else:
-        return 0
+    sarea=range_area(4286,4315,numarray)
+    return sarea if sarea>0 else 0
 
 def facebook_f3 (numarray):
-    if (numarray[5318]+numarray[5319])>0:
-        return numarray[5318]+numarray[5319]
-    else:
-        return 0
+    return numarray[4101] if numarray[4101]>0 else 0
 
 def facebook_f4 (numarray):
-    if numarray[5465]+numarray[5466]>0:
-        x=math.log(numarray[5465]+numarray[5466],2)
-        return x
-    else:
-        return 0
+    sarea=range_area(4066,4097,numarray)
+    sstd=range_std(4066,4097,numarray)
+    return math.log(sarea + sstd, 10) if sarea + sstd>1 else 0
 
 def facebook_f5 (numarray):
-    if (numarray[3739]+numarray[3740]+numarray[3741]+numarray[3742]+numarray[3743])>0:
-        #math.log(x,10)
-        return (numarray[3739]+numarray[3740]+numarray[3741]+numarray[3742]+numarray[3743])/10
-    else:
-        return 0
+    return math.log(numarray[1298], 5) if numarray[1298] > 1 else 0
 
 def facebook_f6 (numarray):
-    if (numarray[3753]+numarray[3754])>0:
-        return numarray[3753]+numarray[3754]
-    else:
-        return 0
-
-def facebook_f6 (numarray):
-    if (numarray[3753]+numarray[3754])>0:
-        return numarray[3753]+numarray[3754]
-    else:
-        return 0
+    sarea=range_area(1199,1203,numarray)
+    return sarea if sarea>0 else 0
 
 def facebook_f7 (numarray):
-    if (numarray[3899]+numarray[3900])>0:
-        return numarray[3899]+numarray[3900]
-    else:
-        return 0
+    sarea=range_area(238,249,numarray)
+    return sarea if sarea>0 else 0
+
+def facebook_f8 (numarray):
+    return math.log(numarray[101] + numarray[95] + numarray[89], 5) if numarray[101]+ numarray[95] + numarray[89] > 1 else 0
 #End of facebook features//////////////////////////////////
 
 #Whatsapp features //////////////////////////////////////////
@@ -482,8 +441,9 @@ while True:
     features.append(youtube_f4(listbukket1))
     features.append(youtube_f5(listbukket1))
     features.append(youtube_f6(listbukket1))
+    features.append(youtube_f7(listbukket1))
 
-    features.append(features[0] + features[1] + features[2] + features[3] + features[4] + features[5])
+    #features.append(features[0] + features[1] + features[2] + features[3] + features[4] + features[5])
     #Facebook Vedio ===========================================================
     features.append(facebook_f1(listbukket1))
     features.append(facebook_f2(listbukket1))
@@ -492,8 +452,9 @@ while True:
     features.append(facebook_f5(listbukket1))
     features.append(facebook_f6(listbukket1))
     features.append(facebook_f7(listbukket1))
+    features.append(facebook_f8(listbukket1))
 
-    features.append(features[7] + features[8] + features[9] + features[10] + features[11] + features[12] + features[13])
+    #features.append(features[7] + features[8] + features[9] + features[10] + features[11] + features[12] + features[13])
     #WhatsApp call===========================================================
     x,y,z = whatsapp_f1f2f3(listbukket1)
     features.append(x)
@@ -509,8 +470,8 @@ while True:
     features.append(x)
     features.append(y)
     features.append(z)
-    features.append(features[15] + features[16] + features[17] + features[18] + features[19] + features[20] + features[21]
-                    + features[22] + features[23] + features[24] + features[25] + features[26])
+    # features.append(features[15] + features[16] + features[17] + features[18] + features[19] + features[20] + features[21]
+    #                 + features[22] + features[23] + features[24] + features[25] + features[26])
     #Skype call===========================================================
     x,y,z = skype_f1f2f3(listbukket1)
     features.append(x)
@@ -524,8 +485,8 @@ while True:
     features.append(skype_f8(listbukket1))
     features.append(skype_f9(listbukket1))
     features.append(skype_f10(listbukket1))
-    features.append(features[28] + features[29] + features[30] + features[31] + features[32] + features[33] + features[34]
-                    + features[35] + features[36] + features[37])
+    # features.append(features[28] + features[29] + features[30] + features[31] + features[32] + features[33] + features[34]
+    #                 + features[35] + features[36] + features[37])
     #Skype Vedio call===========================================================
     x,y,z=skypeVDOC_f1f2f3(listbukket1)
     features.append(x)
@@ -535,7 +496,7 @@ while True:
     features.append(x)
     features.append(y)
     features.append(z)
-    features.append(features[39] + features[40] + features[41] + features[42] + features[43] + features[44])
+    #features.append(features[39] + features[40] + features[41] + features[42] + features[43] + features[44])
     #//////////shrinking the concatienated llist
     #new=[]
     #new=mf.shrink(listbukket1,4)

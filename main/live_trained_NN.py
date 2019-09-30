@@ -270,86 +270,103 @@ def whatsapp_f10f11f12 (numarray):
 #End of whatsapp features////////////////////////////////////
 
 #Skype features////////////////////////////////////////////
-def skype_f1f2f3 (numarray):
-    x=range_nzlength(4090,4150,numarray,6)
-    index, value = range_max_index(4090,4150,numarray)
+def skype_f1 (numarray):
+    return numarray[236] if numarray[236]>0 else 0
 
-    if x>6 and value>14:
-        sstd=range_std(4080,4160,numarray)
-        sarea=range_area(4080,4160,numarray)
-        return x,sstd,math.log(sarea,10)
-    else:
-        return 0,0,0
+def skype_f2 (numarray):
+    return numarray[80] if numarray[80]>0 else 0
 
-def skype_f4f5f6 (numarray):
-    x=range_nzlength(3837,3910,numarray,8)
-    index, value = range_max_index(3837,3910,numarray)
-    if x>8 and 15<value<85:
-        sstd=range_std(3837,3910,numarray)
-        sarea=range_area(3837,3910,numarray)
-        return x,sstd,math.log(sarea,10)
-    else:
-        return 0,0,0
-
-def skype_f7 (numarray):
-    if (numarray[3861])>0:
-        #x=math.log(numarray[3861],5)
-        x=numarray[3861]
-        return x
-    else:
-        return 0
-
-def skype_f8 (numarray):
-    if (numarray[3885])>0:
-        x=math.log(numarray[3885],5)
-        return x
-    else:
-        return 0
-
-def skype_f9 (numarray):
-    return math.log(numarray[4114],5) if numarray[4114]>1 else 0
-
-
-def skype_f10 (numarray):
-    x=numarray[3888]+numarray[3861]+numarray[3859]
-    if x>15:
-        return x
-    else:
-        return 0
-#End of skype features////////////////////////////////////
-
-#Skype Video features//////////////////////////////////////////////
-def skypeVDOC_f1f2f3 (numarray):
+def skype_f3f4f5 (numarray):
     x=0
-    for i in range(2800,3400):
-        if numarray[i]>9:
-            x+=1
-        else:
-            continue
-
-    svdoc_sd=range_std(2800,3400,numarray)
-    svdoc_area=range_area(2800,3400,numarray)
-    return x,svdoc_sd,math.log(svdoc_area,10) if svdoc_area>0 else 0
-
-
-def skypeVDOC_f4f5f6 (numarray):
-    x=0
-    for i in range(4500,5100):
+    for i in range(113,163):
         if numarray[i]>7:
             x+=1
         else:
             continue
 
-    svdoc_sd=range_std(4500,5100,numarray)
-    svdoc_area=range_area(4500,5100,numarray)
+    sc_sd=range_std(113,163,numarray)
+    sc_area=range_area(113,163,numarray)
+    return x,sc_sd,math.log(sc_area,10) if sc_area>0 else 0
+
+def skype_f6 (numarray):
+    return math.log(numarray[1257], 10) if numarray[1257]>1 else 0
+
+def skype_f7f8f9 (numarray):
+    x=0
+    for i in range(4111,4147):
+        if numarray[i]>7:
+            x+=1
+        else:
+            continue
+
+    sc_sd=range_std(4111,4147,numarray)
+    sc_area=range_area(4111,4147,numarray)
+    return x,sc_sd,math.log(sc_area,10) if sc_area>0 else 0
+
+def skype_f10 (numarray):
+    return numarray[5256] if numarray[5256]>0 else 0
+
+def skype_f11 (numarray):
+    return numarray[4208] if numarray[4208]>0 else 0
+#End of skype features////////////////////////////////////
+
+#Skype Video features//////////////////////////////////////////////
+def skypeVDOC_f1f2f3 (numarray):
+    x=0
+    for i in range(397,834):
+        if numarray[i]>9:
+            x+=1
+        else:
+            continue
+
+    svdoc_sd=range_std(397,834,numarray)
+    svdoc_area=range_area(397,834,numarray)
+    return x,svdoc_sd,math.log(svdoc_area,10) if svdoc_area>0 else 0
+
+def skypeVDOC_f4f5f6 (numarray):
+    x=0
+    for i in range(834,1240):
+        if numarray[i]>7:
+            x+=1
+        else:
+            continue
+
+    svdoc_sd=range_std(834,1240,numarray)
+    svdoc_area=range_area(834,1240,numarray)
     #svdoc_area_log=math.log(svdoc_area,10)
     return x,svdoc_sd,math.log(svdoc_area,10) if svdoc_area>0 else 0
 
+def skypeVDOC_f7f8f9 (numarray):
+    x=0
+    for i in range(4413,4644):
+        if numarray[i]>7:
+            x+=1
+        else:
+            continue
+
+    svdoc_sd=range_std(4413,4644,numarray)
+    svdoc_area=range_area(4413,4644,numarray)
+    #svdoc_area_log=math.log(svdoc_area,10)
+    return x,svdoc_sd,math.log(svdoc_area,10) if svdoc_area>0 else 0
+
+def skypeVDOC_f10f11f12 (numarray):
+    x=0
+    for i in range(4697,5223):
+        if numarray[i]>7:
+            x+=1
+        else:
+            continue
+
+    svdoc_sd=range_std(4697,5223,numarray)
+    svdoc_area=range_area(4697,5223,numarray)
+    #svdoc_area_log=math.log(svdoc_area,10)
+    return x,svdoc_sd,math.log(svdoc_area,10) if svdoc_area>0 else 0
 
 #End of Skype vedio features/////////////////////////////////
 
 #set capture_raw_data to True if want to save the raw packet length histogram
-capture_raw_data = True
+#capture_raw_data = True
+capture_raw_data = False
 cnt = 0
 while True:
     #starttime=time.time() #timer start to exicute the code periodicaly
@@ -473,18 +490,19 @@ while True:
     # features.append(features[15] + features[16] + features[17] + features[18] + features[19] + features[20] + features[21]
     #                 + features[22] + features[23] + features[24] + features[25] + features[26])
     #Skype call===========================================================
-    x,y,z = skype_f1f2f3(listbukket1)
+    features.append(skype_f1(listbukket1))
+    features.append(skype_f2(listbukket1))
+    x,y,z = skype_f3f4f5(listbukket1)
     features.append(x)
     features.append(y)
     features.append(z)
-    x,y,z = skype_f4f5f6(listbukket1)
+    features.append(skype_f6(listbukket1))
+    x,y,z = skype_f7f8f9(listbukket1)
     features.append(x)
     features.append(y)
     features.append(z)
-    features.append(skype_f7(listbukket1))
-    features.append(skype_f8(listbukket1))
-    features.append(skype_f9(listbukket1))
     features.append(skype_f10(listbukket1))
+    features.append(skype_f11(listbukket1))
     # features.append(features[28] + features[29] + features[30] + features[31] + features[32] + features[33] + features[34]
     #                 + features[35] + features[36] + features[37])
     #Skype Vedio call===========================================================
@@ -493,6 +511,14 @@ while True:
     features.append(y)
     features.append(z)
     x,y,z=skypeVDOC_f4f5f6(listbukket1)
+    features.append(x)
+    features.append(y)
+    features.append(z)
+    x,y,z=skypeVDOC_f7f8f9(listbukket1)
+    features.append(x)
+    features.append(y)
+    features.append(z)
+    x,y,z=skypeVDOC_f10f11f12(listbukket1)
     features.append(x)
     features.append(y)
     features.append(z)
@@ -566,6 +592,19 @@ while True:
             #rawdataR = open("C:\\Users\\Rimas\\Desktop\\MSc\\IEEE\\attempt 2\\images\\predictions.csv", "w")
             pred = tf.argmax(tf.nn.softmax(prediction),1)
             predicted_class=int(pred.eval({inputs:my_list}))
+
+        # if predicted_class == 0:
+        #     predicted_class="YouTube,"
+        # elif predicted_class== 1:
+        #     predicted_class="FaceBook,"
+        # elif predicted_class== 2:
+        #     predicted_class="WhatsApp,"
+        # elif predicted_class== 3:
+        #     predicted_class="SkypeVoiceCall,"
+        # elif predicted_class== 4:
+        #     predicted_class="SkypeVideoCall,"
+        # else:
+        #     predicted_class="DO_NOT_KNOW"
 
         if predicted_class == 0:
             predicted_class="YouTube,"
